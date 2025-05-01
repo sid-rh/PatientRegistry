@@ -9,7 +9,13 @@ const AddPatient = ({onClose}) => {
     const [email, setEmail] = useState('');
 
     const handleSubmit = async (e) => {
-        console.log("submit");
+        e.preventDefault();
+        console.log({name,dob,email});
+        await db.query(
+        'INSERT INTO patients (name, dob, email) VALUES ($1, $2, $3);',
+        [name, dob, email]
+        );
+        onClose();
       };
   return (
     <div>
@@ -17,13 +23,28 @@ const AddPatient = ({onClose}) => {
             <h2>Add Patient</h2>
             <form onSubmit={handleSubmit}>
                 <div>
-                    Name
+                    <label>Name</label>
+                    <input
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                    />
                 </div>
                 <div>
-                    Date of Birth
+                    <label>Date Of Birth</label>
+                    <input
+                    type="date"
+                    value={dob}
+                    onChange={(e) => setDob(e.target.value)}
+                    />
                 </div>
                 <div>
-                    Email
+                    <label>Email</label>
+                    <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
                 </div>
                 <div>
                     <button
