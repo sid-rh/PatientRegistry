@@ -11,7 +11,7 @@ import App from './App.jsx'
 
 const db= await PGlite.create({
   extensions:{live},
-  
+  dataDir: 'idb://patient-registry-db'
 });
 await db.exec(
   `CREATE TABLE IF NOT EXISTS patients(
