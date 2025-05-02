@@ -1,4 +1,4 @@
-import React,{ useState,useRef } from 'react';
+import React,{ useState,useRef, useEffect } from 'react';
 import { usePGlite } from '@electric-sql/pglite-react';
 
 
@@ -8,6 +8,10 @@ const AddPatient = ({onClose}) => {
     const [name, setName] = useState('');
     const [dob, setDob] = useState('');
     const [email, setEmail] = useState('');
+
+    useEffect(() => {
+        modalRef.current?.querySelector('input')?.focus();
+      }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -19,7 +23,9 @@ const AddPatient = ({onClose}) => {
         onClose();
       };
 
-      const handleBackdropClick = () => onClose();
+      const handleBackdropClick = () =>{
+        onClose();
+      }
   return (
     
         <div
