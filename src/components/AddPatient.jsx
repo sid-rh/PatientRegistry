@@ -15,7 +15,7 @@ const AddPatient = ({onClose}) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log({name,dob,email});
+        if (!name.trim()) return;
         await db.query(
         'INSERT INTO patients (name, dob, email) VALUES ($1, $2, $3);',
         [name, dob, email]
