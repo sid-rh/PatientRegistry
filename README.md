@@ -59,3 +59,6 @@ A frontend-only React application for patient registration and management, using
 * Open multiple browser tabs; data persists and syncs via IndexedDB and Multi-tab Worker.
 
 
+
+
+
